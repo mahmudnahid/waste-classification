@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image 
 import cv2
 import yolov5
-from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
+from streamlit_webrtc import VideoProcessorBase, webrtc_streamer, WebRtcMode, RTCConfiguration
 import av
 import requests
 
@@ -74,8 +74,8 @@ def detect_classes(img):
     return bbox_img
 
 
-class VideoProcessor:
-    def recv(self, frame):
+class VideoProcessor(VideoProcessorBase):
+    def recv(self, frame: av.VideoFrame) -> av.VideoFrame:
         img = frame.to_ndarray(format="bgr24")
         
         # vision processing
