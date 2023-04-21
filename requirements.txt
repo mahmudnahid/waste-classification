@@ -4,3 +4,4 @@ yolov5
 opencv-python
 Pillow
 av
+requests

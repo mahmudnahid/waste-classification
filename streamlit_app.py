@@ -5,11 +5,14 @@ import cv2
 import yolov5
 from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
 import av
+import requests
 
-
+iceServers = [{"urls": ["stun:stun.l.google.com:19302"]}]
+response = requests.get("https://wasteclassification.metered.live/api/v1/turn/credentials?apiKey=186a726547c4e088e331c5177d388e8aa1e6")
+iceServers = response.json()
 
 RTC_CONFIGURATION = RTCConfiguration(
-    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+    {"iceServers": iceServers}
 )
 
 st.title("Waste Class Detector")
@@ -26,9 +29,9 @@ def load_image(image_file):
 @st.cache_resource
 def load_model():
     # load model
-    model = yolov5.load('keremberke/yolov5m-garbage')
+    # model = yolov5.load('keremberke/yolov5m-garbage')
     # load pretrained model
-    #model = yolov5.load('yolov5s.pt')
+    model = yolov5.load('best.pt')
     
     # set model parameters
     model.conf = 0.25  # NMS confidence threshold
