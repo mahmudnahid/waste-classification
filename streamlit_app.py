@@ -38,7 +38,7 @@ def load_model():
     model.iou = 0.45  # NMS IoU threshold
     model.agnostic = False  # NMS class-agnostic
     model.multi_label = False  # NMS multiple labels per box
-    model.max_det = 5  # maximum number of detections per image   
+    model.max_det = 15  # maximum number of detections per image   
      
     return model
 
