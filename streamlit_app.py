@@ -38,7 +38,7 @@ def load_model():
     model.iou = 0.45  # NMS IoU threshold
     model.agnostic = False  # NMS class-agnostic
     model.multi_label = False  # NMS multiple labels per box
-    model.max_det = 100  # maximum number of detections per image   
+    model.max_det = 5  # maximum number of detections per image   
      
     return model
 
@@ -81,12 +81,13 @@ class VideoProcessor:
         # vision processing
         flipped = img[:, ::-1, :]
         im_pil = Image.fromarray(flipped)
-        # clf_img = detect_classes(im_pil)
+        clf_img = detect_classes(im_pil)
+        bbox_img = np.array(clf_img)
 
         # model processing
-        model = load_model()
-        results = model(im_pil, size=640)
-        bbox_img = np.array(results.render()[0]) 
+        # model = load_model()
+        # results = model(im_pil, size=640)
+        # bbox_img = np.array(results.render()[0]) 
 
         return av.VideoFrame.from_ndarray(bbox_img, format="bgr24")
 
