@@ -1,6 +1,6 @@
+streamlit
+streamlit_webrtc
 yolov5
+opencv-python
 Pillow
 av
-streamlit==1.19.0
-streamlit_webrtc==0.44.7
-opencv-python-headless==4.7.0.72
