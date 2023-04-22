@@ -28,8 +28,6 @@ def load_image(image_file):
 
 @st.cache_resource
 def load_model():
-    # load model
-    # model = yolov5.load('keremberke/yolov5m-garbage')
     # load pretrained model
     model = yolov5.load('best.pt')
     
