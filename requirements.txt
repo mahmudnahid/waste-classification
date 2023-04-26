@@ -1,7 +1,7 @@
 streamlit
 streamlit_webrtc
 yolov5
-opencv-python-headless
+opencv-python
 Pillow
 av
 requests
